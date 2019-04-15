@@ -491,5 +491,5 @@ var Evans = {
         console.log(this);
         console.log(2019 - this.yearOfBirth);
     }
-}
+};
 Evans.calculateAge();
