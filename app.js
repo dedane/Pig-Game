@@ -2,44 +2,40 @@ var scores, roundScore, activePlayer, gamePlaying;
 
 init();
 
-document.querySelector('.dice').style.display = 'none';
 
-document.getElementById('score-0').textContent = '0';
-document.getElementById('score-1').textContent = '0';
-document.getElementById('Current-0').textContent = '0';
-document.getElementById('Current-1').textContent = '0';
 
 
 document.querySelector('.btn-roll').addEventListener('click', function() {
 
     //1.Random Number
-
-   var dice = Math.floor(Math.random() * 6)+ 1;
+    if (gamePlaying){
+        var dice = Math.floor(Math.random() * 6)+ 1;
     
 
-    //2. Display the result
+        //2. Display the result
+        
+        var diceDOM = document.querySelector('.dice');
+        diceDOM.style.display = 'block';
+        diceDOM.src = 'dice-' + dice + '.png';
     
-    var diceDOM = document.querySelector('.dice');
-    diceDOM.style.display = 'block';
-    diceDOM.src = 'dice-' + dice + '.png';
-
-    //3. update and round score IF the rolled number was not a 1
-    if (dice !== 1){
-        //add score
-        roundScore += dice;
-        document.querySelector('#current-' + activePlayer).textContent = roundScore;
+        //3. update and round score IF the rolled number was not a 1
+        if (dice !== 1){
+            //add score
+            roundScore += dice;
+            document.querySelector('#current-' + activePlayer).textContent = roundScore;
+        }
+        else {
+            //next player
+            // same as, if (activePlayer == 0){ activePlayer = 1} else {activePlayer = 0}
+            nextPlayer();
+        }
     }
-    else {
-        //next player
-        // same as, if (activePlayer == 0){ activePlayer = 1} else {activePlayer = 0}
-        nextPlayer();
-    }
+  
 });       
      document.querySelector('.btn-hold').addEventListener('click', function() {
          
-
-            
-         //add current score
+      if (gamePlaying){
+           //add current score
         scores[activePlayer] += roundScore;
 
         // update UI
@@ -53,6 +49,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
             document.querySelector('.dice').style.display = 'none';
             document.querySelector('player-' +activePlayer + 'panel-').classList.add('winner');
             document.querySelector('player-' +activePlayer + 'panel-').classList.remove('active');
+            gamePlaying = false;
         }
          
         //let the next player play*/
@@ -61,6 +58,10 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 
             nextPlayer();
         }
+        
+
+      }
+            
         
      });
 
@@ -100,6 +101,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
             scores = [0,0];
             activePlayer = 0;
             roundScore = 0;
+            gamePlaying = true;
 
         document.querySelector('.dice').style.display = 'none';
 
