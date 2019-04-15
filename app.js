@@ -29,8 +29,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
             // same as, if (activePlayer == 0){ activePlayer = 1} else {activePlayer = 0}
             nextPlayer();
         }
-    }
-  
+    }  
 });       
      document.querySelector('.btn-hold').addEventListener('click', function() {
          
@@ -47,8 +46,8 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 
             document.querySelector('#name-' +activePlayer).textContent = 'Winner!';
             document.querySelector('.dice').style.display = 'none';
-            document.querySelector('player-' +activePlayer + 'panel-').classList.add('winner');
-            document.querySelector('player-' +activePlayer + 'panel-').classList.remove('active');
+            document.querySelector('.player-' +activePlayer + '-panel').classList.add('winner');
+            document.querySelector('.player-' +activePlayer + '-panel').classList.remove('active');
             gamePlaying = false;
         }
          
@@ -59,10 +58,8 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
             nextPlayer();
         }
         
-
       }
-            
-        
+               
      });
 
     
