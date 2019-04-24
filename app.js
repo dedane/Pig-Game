@@ -1,4 +1,5 @@
-var scores, roundScore, activePlayer, gamePlaying;
+var scores, roundScore, activePlayer, gamePlaying ;
+var diceRoll;
 
 init();
 
@@ -9,7 +10,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 
     //1.Random Number
     if (gamePlaying){
-        var dice = Math.floor(Math.random() * 6)+ 1;
+        var dice = Math.floor(Math.random() * 6) + 1;
     
 
         //2. Display the result
@@ -17,7 +18,18 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
         var diceDOM = document.querySelector('.dice');
         diceDOM.style.display = 'block';
         diceDOM.src = 'dice-' + dice + '.png';
-    
+        //2.1 if dice roll  = 6 twice the player looses all his point
+       if ( dice === 6 && diceRoll === 6   ){
+
+        
+        scores[activePlayer] = 0;
+
+        document.getElementById('score-' + activePlayer).textContent = '0';
+        
+        nextPlayer();
+        
+
+       }
         //3. update and round score IF the rolled number was not a 1
         if (dice !== 1){
             //add score
@@ -29,6 +41,8 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
             // same as, if (activePlayer == 0){ activePlayer = 1} else {activePlayer = 0}
             nextPlayer();
         }
+
+        diceRoll = dice;
     }  
 });       
      document.querySelector('.btn-hold').addEventListener('click', function() {
@@ -99,6 +113,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
             activePlayer = 0;
             roundScore = 0;
             gamePlaying = true;
+            diceRoll = 6;
 
         document.querySelector('.dice').style.display = 'none';
 
