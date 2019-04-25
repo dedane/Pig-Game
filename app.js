@@ -3,6 +3,7 @@ var diceRoll;
 
 init();
 
+var winner = window.prompt('your high score is:');
 
 
 
@@ -54,9 +55,9 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
         // update UI
         document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
 
-
+         
         //Check if player won the game
-        if (scores[activePlayer] >= 20){
+        if (scores[activePlayer] >= winner){
 
             document.querySelector('#name-' +activePlayer).textContent = 'Winner!';
             document.querySelector('.dice').style.display = 'none';

@@ -477,6 +477,7 @@ else {
     console.log("Mark  is a better tipper");
 }
 */
+/*
 calculateAge(1996);
 
 function calculateAge(year) {
@@ -493,3 +494,5 @@ var Evans = {
     }
 };
 Evans.calculateAge();
+**/
+ windows.prompt("Please enter your name","Harry Potter");
