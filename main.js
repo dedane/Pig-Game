@@ -495,4 +495,4 @@ var Evans = {
 };
 Evans.calculateAge();
 **/
- windows.prompt("Please enter your name","Harry Potter");
+ 

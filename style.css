@@ -165,13 +165,13 @@ i {
 
 .dice {
     position: absolute;
-    left: 41%;
+    left: 37%;
     top: 178px;
     transform: translateX(50%);
     height: 80px;
     box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.10);
 }
-/*
+
 .dice1 {
     position: absolute;
     left: 50%;
@@ -180,7 +180,7 @@ i {
     height: 80px;
     box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.10);
 }
-*/
+
 
 .winner { background-color: #f7f7f7; }
 .winner .player-name { font-weight: 300; color: #EB4D4D; }
